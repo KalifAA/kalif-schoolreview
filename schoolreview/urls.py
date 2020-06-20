@@ -15,7 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from schoolreviewapp.views import SchoolsView, SchoolDetailView
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
+    path('', SchoolsView.as_view(), name='home'),
     path('admin/', admin.site.urls),
-]
+    path('schools/all/', SchoolsView.as_view(), name='schools-all'),
+    path('schools/<int:pk>', SchoolDetailView.as_view(), name='school-detail' )
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

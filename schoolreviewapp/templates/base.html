@@ -1,0 +1,67 @@
+{% load django_bootstrap_breadcrumbs %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+      #header{
+
+      }
+      .card{
+        min-height: 500px;
+      }
+      .card .card-img-top{
+        width: 100%;
+        height: 15vw;
+        object-fit: cover;
+      }
+    </style>
+</head>
+<body>
+    
+
+            <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+              <a class="navbar-brand" href="#">SchoolReview</a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+            
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                  <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'schools-all' %}">All Schools</a>
+                  </li>
+                  
+                  
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+              </div>
+            </nav>
+
+    <div class="container">
+        <div id="content" class="py-4">
+            <div class="row">
+              <div class="col">
+                {% block breadcrumbs %}
+                    {% clear_breadcrumbs %}
+                    {% breadcrumb " Home " "/" %}
+                {% endblock %}
+              </div>
+            </div>
+            {% block page_content %}
+                  
+            {% endblock page_content %}
+                
+        </div>
+    </div>
+</body>
+</html>
