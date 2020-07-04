@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView, ListView, DetailView
 from django.shortcuts import HttpResponseRedirect, reverse
 
+
 import datetime
 
 from .models import School, SchoolImage
